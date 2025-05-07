@@ -1,0 +1,25 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>SSS (Sık Sorulan Sorular)</h2>
+  <a href="{{ url_for('admin.sss_ekle') }}" class="btn btn-success mb-3">+ Yeni Soru Ekle</a>
+
+  {% if sorular %}
+  <div class="list-group">
+    {% for soru in sorular %}
+    <div class="list-group-item list-group-item-action mb-2 border rounded shadow-sm">
+      <h5 class="mb-2 text-danger">{{ soru.soru }}</h5>
+      <p>{{ soru.cevap }}</p>
+      <div class="d-flex justify-content-end">
+        <a href="{{ url_for('admin.sss_guncelle', id=soru.id) }}" class="btn btn-sm btn-secondary me-2">Güncelle</a>
+        <a href="{{ url_for('admin.sss_sil', id=soru.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>Henüz soru eklenmemiş.</p>
+  {% endif %}
+</div>
+{% endblock %}

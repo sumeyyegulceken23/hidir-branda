@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}Anasayfa | HIDIR BRANDA{% endblock %}
+
+{% block content %}
+
+<section class="hero-section text-center text-white">
+  <div class="overlay-dark"></div>
+  <div class="hero-content">
+    <h1 class="display-4 fw-bold">HIDIR BRANDA</h1>
+    <p class="lead">Tente, Pergola, Araç Brandası ve Gölgelendirme Sistemlerinde Uzman Çözümler</p>
+    <a href="{{ url_for('iletisim') }}" class="btn btn-danger mt-3">Bize Ulaşın</a>
+  </div>
+</section>
+
+<!-- HİZMETLER -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Hizmet Alanlarımız</h2>
+    <div class="row text-center">
+      {% for hizmet in hizmetler %}
+      <div class="col-md-4 mb-4">
+        <div class="service-card p-4 border rounded shadow-sm h-100 bg-white animate__animated animate__fadeInUp">
+          <i class="bi {{ hizmet.ikon }} fs-2 text-danger mb-3"></i>
+          <h5>{{ hizmet.ad }}</h5>
+          <p class="text-muted small">{{ hizmet.aciklama[:80] }}...</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- GALERİ -->
+<section class="py-5">
+  <div class="container">
+    <h3 class="text-danger fw-bold mb-4 text-center">Uygulama Galerisi</h3>
+    <div class="row g-4">
+      {% for gorsel in galeri_gorseller %}
+      <div class="col-6 col-md-3">
+        <div class="overflow-hidden rounded shadow-sm">
+          <a href="{{ url_for('static', filename=gorsel.gorsel_yolu) }}" data-lightbox="galeri" data-title="{{ gorsel.baslik }}">
+            <img src="{{ url_for('static', filename=gorsel.gorsel_yolu) }}" class="img-fluid hover-zoom" alt="{{ gorsel.baslik }}">
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CTA -->
+<section class="cta-section text-white text-center position-relative overflow-hidden">
+  <div class="cta-bg-pattern"></div>
+  <div class="container position-relative">
+    <h3 class="fw-bold display-6 mb-3 animate__animated animate__fadeInDown">🚀 Hemen Projenizi Başlatalım</h3>
+    <p class="lead animate__animated animate__fadeInUp">Bize ulaşın, <strong>keşif</strong> ve <strong>teklif</strong> tamamen ücretsiz!</p>
+    <div class="d-flex justify-content-center gap-3 mt-4 animate__animated animate__fadeInUp">
+      <a href="{{ url_for('iletisim') }}" class="btn btn-light btn-lg px-4 shadow">İletişim Sayfası</a>
+      <a href="https://wa.me/905545413544" target="_blank" class="btn btn-outline-light btn-lg px-4 shadow-sm">WhatsApp'tan Yaz</a>
+    </div>
+  </div>
+</section>
+
+<!-- HARİTA -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h4 class="text-center mb-4">Ofis Lokasyonumuz</h4>
+    <div class="map-wrapper">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3216.4902020812906!2d36.56797047562005!3d36.276153972401225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x152582e34685b001%3A0x720696c4285594b2!2shidirbranda!5e0!3m2!1str!2str!4v1744996128698!5m2!1str!2str" 
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Giriş | HIDIR BRANDA{% endblock %}
+
+{% block content %}
+<section class="py-5" style="min-height: 80vh; background-color: #f8f9fa;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow rounded">
+          <div class="card-body">
+            <h4 class="text-center mb-4 text-danger fw-bold">🔒 Admin Girişi</h4>
+
+            <form method="POST">
+              {{ form.hidden_tag() }}
+
+              <div class="mb-3">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control", placeholder="Kullanıcı adınızı girin") }}
+              </div>
+
+              <div class="mb-3">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-control", placeholder="Şifrenizi girin") }}
+              </div>
+
+              <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-danger">Giriş Yap</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+        <p class="text-center small mt-3 text-muted">Yalnızca yetkili kullanıcılar giriş yapabilir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

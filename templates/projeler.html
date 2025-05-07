@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Projelerimiz | HIDIR BRANDA{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-dark text-white text-center">
+  <div class="container">
+    <h1 class="display-5 fw-bold">Tamamlanan Projelerimiz</h1>
+    <p class="lead">Yüzlerce farklı alanda gerçekleştirdiğimiz projelerimizle gurur duyuyoruz.</p>
+  </div>
+</section>
+
+<!-- VİDEO + METİN ALANI -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="ratio ratio-16x9 shadow-sm rounded overflow-hidden">
+          <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
+            <source src="{{ url_for('static', filename='img/proje.mp4') }}" type="video/mp4">
+            Tarayıcınız video etiketini desteklemiyor.
+          </video>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h3 class="text-danger mb-3">Profesyonel Uygulamalar</h3>
+        <p class="text-muted">Tente, pergole, zip perde, kış bahçesi ve özel tasarım sistemlerde her projeyi mekâna özel olarak tasarlıyor, ölçülendiriyor ve uyguluyoruz. Teknik ekibimiz ve üretim altyapımızla kaliteli ve hızlı hizmet sunuyoruz.</p>
+        <ul class="list-unstyled">
+          <li>🏗️ Endüstriyel tesis uygulamaları</li>
+          <li>🏠 Villa & müstakil ev projeleri</li>
+          <li>🏢 Kafe, restoran ve otel düzenlemeleri</li>
+          <li>⚙️ Özel üretim rüzgarlık ve gölgelendirme sistemleri</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      {% for proje in projeler %}
+      <div class="col-6 col-md-4 mb-4">
+        <div class="card shadow-sm rounded overflow-hidden h-100">
+          <img src="{{ url_for('static', filename=proje.gorsel_yolu) }}" class="card-img-top" alt="{{ proje.baslik }}">
+          <div class="card-body">
+            <h5 class="card-title text-center">{{ proje.baslik }}</h5>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if not projeler %}
+    <p class="text-center mt-4">Henüz proje eklenmedi.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

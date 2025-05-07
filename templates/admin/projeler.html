@@ -1,0 +1,26 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Projeler</h2>
+  <a href="{{ url_for('admin.proje_ekle') }}" class="btn btn-success mb-3">+ Yeni Proje Ekle</a>
+
+  {% if projeler %}
+  <div class="row">
+    {% for proje in projeler %}
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img src="{{ url_for('static', filename=proje.gorsel_yolu) }}" class="card-img-top" alt="{{ proje.baslik }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ proje.baslik }}</h5>
+          <a href="{{ url_for('admin.proje_sil', id=proje.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Silmek istediğine emin misin?')">Sil</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>Henüz proje eklenmemiş.</p>
+  {% endif %}
+</div>
+{% endblock %}

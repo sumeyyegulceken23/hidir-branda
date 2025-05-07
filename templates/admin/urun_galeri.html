@@ -1,0 +1,32 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">{{ urun.baslik }} - Galeri Yönetimi</h2>
+
+  <form method="POST" enctype="multipart/form-data" class="mb-4">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      {{ form.gorsel.label(class="form-label") }}
+      {{ form.gorsel(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-success">Yeni Görsel Ekle</button>
+  </form>
+
+  {% if urun.galeriler %}
+<div class="row">
+  {% for g in urun.galeriler %}
+  <div class="col-md-3 mb-4">
+    <div class="card shadow-sm">
+      <img src="{{ url_for('static', filename=g.gorsel) }}" class="card-img-top" alt="Galeri Görseli">
+      <div class="card-body text-center">
+        <a href="{{ url_for('admin.urun_galeri_sil', id=g.id) }}" class="btn btn-sm btn-danger mt-2" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p>Henüz görsel eklenmemiş.</p>
+{% endif %}
+{% endblock %}

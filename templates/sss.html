@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Sık Sorulan Sorular | HIDIR BRANDA{% endblock %}
+
+{% block content %}
+<!-- SSS BAŞLIK -->
+<section class="py-5 text-white" style="background: linear-gradient(90deg, #434343 0%, #000000 100%);">
+  <div class="container text-center">
+    <h1 class="display-5 fw-bold animate__animated animate__fadeInDown">Sık Sorulan Sorular</h1>
+    <p class="lead">Tente, pergola ve branda sistemlerine dair merak ettiklerinizi sizin için yanıtladık.</p>
+  </div>
+</section>
+
+<!-- SSS GÖVDE -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="accordion accordion-flush" id="sssAccordion">
+
+      {% for soru in sorular %}
+      <div class="accordion-item mb-3 border rounded shadow-sm">
+        <h2 class="accordion-header" id="heading{{ loop.index }}">
+          <button class="accordion-button {% if not loop.first %}collapsed{% endif %} fw-bold text-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ loop.index }}" aria-expanded="{{ 'true' if loop.first else 'false' }}" aria-controls="collapse{{ loop.index }}">
+            {{ soru.soru }}
+          </button>
+        </h2>
+        <div id="collapse{{ loop.index }}" class="accordion-collapse collapse {% if loop.first %}show{% endif %}" aria-labelledby="heading{{ loop.index }}" data-bs-parent="#sssAccordion">
+          <div class="accordion-body">
+            {{ soru.cevap }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+{% endblock %}

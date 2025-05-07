@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Hakkımızda | HIDIR BRANDA{% endblock %}
+
+{% block content %}
+<!-- BAŞLIK + SLOGAN (animasyonlu fade-in) -->
+<section class="py-5 text-center bg-dark text-white animate__animated animate__fadeIn">
+  <div class="container">
+    <h1 class="display-5 fw-bold">HIDIR BRANDA</h1>
+    <p class="lead">Yenilikçi, Güvenilir, Tecrübeli. Her Zaman Sizinle.</p>
+  </div>
+</section>
+
+<section class="py-5" style="background-color: #f8f9fa;">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-md-6 animate__animated animate__fadeInLeft">
+        <img src="{{ url_for('static', filename='img/iletisim.jpg') }}" alt="Hakkımızda" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6 animate__animated animate__fadeInRight">
+        <h3 class="fw-bold">Biz Kimiz?</h3>
+        <p>Hıdır Branda, 50 yılı aşkın süredir tente ve branda sistemleri sektöründe faaliyet göstermektedir. Hatay merkezli firmamız, güçlü referans ağı ve deneyimli kadrosuyla müşterilerine en kaliteli hizmeti sunmayı ilke edinmiştir.
+
+          Teknolojiyi ve yenilikleri yakından takip ederek her geçen gün ürün ve hizmet yelpazesini genişleten Hıdır Branda, İstanbul içi ücretsiz keşif hizmeti ve tüm Türkiye'ye gönderim avantajıyla sektörde fark yaratmaya devam ediyor.</p>
+        <ul class="list-unstyled mt-3">
+          <li><i class="bi bi-check-circle text-success me-2"></i> Müşteri Memnuniyeti </li>
+          <li><i class="bi bi-check-circle text-success me-2"></i> Kaliteli Ürün ve Malzeme</li>
+          <li><i class="bi bi-check-circle text-success me-2"></i> Uygun Fiyat, Hızlı Çözüm</li>
+          <li><i class="bi bi-check-circle text-success me-2"></i> Tüm Türkiye'ye Hizmet</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="py-5" style="background: linear-gradient(135deg, #a4afb9, #ffffff);">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-6 mb-4">
+        <div class="p-4 bg-white shadow rounded h-100">
+          <img src="https://img.icons8.com/ios/40/goal--v1.png" class="mb-3" alt="Misyon">
+          <h5 class="fw-bold">Misyonumuz</h5>
+          <p class="text-muted">Müşterilerimize kaliteli, dayanıklı ve estetik branda & tente çözümleri sunarak yaşam ve iş alanlarını daha konforlu ve kullanışlı hâle getirmek.</p>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="p-4 bg-white shadow rounded h-100">
+          <img src="https://img.icons8.com/ios/40/visible--v1.png" class="mb-3" alt="Vizyon">
+          <h5 class="fw-bold">Vizyonumuz</h5>
+          <p class="text-muted">Sektörde öncü ve güvenilir bir marka olarak, Türkiye genelinde branda ve tente sistemleri denince akla gelen ilk firma olmak.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- NEDEN BİZ? (ikonlu kart animasyonlu) -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Neden HIDIR BRANDA?</h2>
+    <div class="row text-center">
+      {% for neden in [
+        ['Kalite Garantisi', 'Kullandığımız tüm malzemeler birinci sınıf ve garantilidir.', 'https://img.icons8.com/?size=100&id=zz9579rdTkqN&format=png&color=000000'],
+        ['Zamanında Teslimat', 'Projelerinizi planlanan sürede teslim ediyoruz.', 'https://img.icons8.com/?size=100&id=10083&format=png&color=000000'],
+        ['Uzman Kadro', 'Deneyimli montaj ve teknik destek ekibimizle profesyonel hizmet sunuyoruz.', 'https://img.icons8.com/?size=100&id=Q93bRrCPLbZm&format=png&color=000000']
+        ] %}
+      <div class="col-md-4 mb-4 animate__animated animate__zoomIn">
+        <div class="p-4 border rounded h-100">
+          <img src="{{ neden[2] }}" class="mb-3" alt="{{ neden[0] }}">
+          <h5 class="fw-bold">{{ neden[0] }}</h5>
+          <p class="text-muted small">{{ neden[1] }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- CTA - İLETİŞİM BUTONU (daha sade renk) -->
+<section class="py-5 text-white text-center" style="  background: linear-gradient(135deg, #d63384, #dc3545);
+">
+  <div class="container">
+    <h4 class="fw-bold mb-3">Bizi daha yakından tanımak ve projelerinizi başlatmak için bizimle iletişime geçin.</h4>
+    <a href="{{ url_for('iletisim') }}" class="btn btn-outline-light btn-lg">İletişime Geç</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,67 @@
+<!-- urun_detay.html (template olarak dinamik her slug icin kullanilacak) -->
+{% extends 'base.html' %}
+
+{% block title %}{{ urun.baslik }} | HIDIR BRANDA{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-md-6">
+        <h2 class="text-danger mb-3">{{ urun.baslik }}</h2>
+        <p class="text-muted">{{ urun.aciklama }}</p>
+
+        {% if urun.avantajlar %}
+        <h5 class="fw-bold mt-4">📌 Avantajları</h5>
+        <ul class="list-unstyled ms-3">
+          {% for satir in urun.avantajlar.splitlines() %}
+          <li>✅ {{ satir }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if urun.kullanim_alanlari %}
+        <h5 class="fw-bold mt-4">📌 Kullanım Alanları</h5>
+        <ul class="list-unstyled ms-3">
+          {% for satir in urun.kullanim_alanlari.splitlines() %}
+          <li>📍 {{ satir }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+      <div class="col-md-6">
+        <div class="position-relative">
+          <img src="{{ url_for('static', filename=urun.gorsel) }}" class="img-fluid rounded shadow" alt="{{ urun.baslik }}">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERİ -->
+{% if urun.galeriler %}
+<section class="py-5">
+  <div class="container">
+    <h3 class="text-danger fw-bold mb-4 text-center">Uygulama Galerisi</h3>
+    <div class="row g-4">
+      {% for g in urun.galeriler %}
+      <div class="col-6 col-md-3">
+        <div class="overflow-hidden rounded shadow-sm">
+          <img src="{{ url_for('static', filename=g.gorsel) }}" class="img-fluid hover-zoom" alt="Galeri">
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<style>
+  .hover-zoom {
+    transition: transform 0.3s ease;
+  }
+  .hover-zoom:hover {
+    transform: scale(1.05);
+  }
+</style>
+{% endblock %}

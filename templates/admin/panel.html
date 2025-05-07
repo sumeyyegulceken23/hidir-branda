@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Panel | HIDIR BRANDA{% endblock %}
+
+{% block content %}
+<section class="py-5" style="min-height: 80vh;">
+  <div class="container">
+    <h2 class="mb-4 text-danger fw-bold">📋 Yönetim Paneli</h2>
+    <p>Hoş geldiniz, <strong>{{ current_user.username }}</strong>. Aşağıdaki alanları yönetebilirsiniz:</p>
+
+    <div class="row g-4 mt-4">
+      
+      <!-- HİZMETLER -->
+      <div class="col-md-4">
+        <a href="{{ url_for('admin.hizmetler') }}" class="text-decoration-none text-dark">
+          <div class="p-4 bg-light shadow-sm rounded text-center h-100 border border-danger">
+            <h5 class="fw-bold">Hizmet Alanlarımız</h5>
+            <p class="text-muted">Anasayfada görünen hizmetleri yönetin.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- INDEX GALERİ -->
+      <div class="col-md-4">
+        <a href="{{ url_for('admin.galeri') }}" class="text-decoration-none text-dark">
+          <div class="p-4 bg-light shadow-sm rounded text-center h-100 border border-success">
+            <h5 class="fw-bold">Index Galerisi</h5>
+            <p class="text-muted">Anasayfa galeri görsellerini yönetin.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- PROJELER -->
+      <div class="col-md-4">
+        <a href="{{ url_for('admin.projeler') }}" class="text-decoration-none text-dark">
+          <div class="p-4 bg-light shadow-sm rounded text-center h-100 border border-primary">
+            <h5 class="fw-bold">Projeler</h5>
+            <p class="text-muted">Projeler sayfası içeriklerini yönetin.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- SIK SORULAN SORULAR -->
+      <div class="col-md-4">
+        <a href="{{ url_for('admin.sss_listesi') }}" class="text-decoration-none text-dark">
+          <div class="p-4 bg-light shadow-sm rounded text-center h-100 border border-warning">
+            <h5 class="fw-bold">Sık Sorulan Sorular</h5>
+            <p class="text-muted">SSS içeriklerini yönetin.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- GENEL GALERİ -->
+  <div class="col-md-4">
+    <a href="{{ url_for('admin.galeri_genel') }}" class="text-decoration-none text-dark">
+      <div class="p-4 bg-light shadow-sm rounded text-center h-100 border border-success">
+        <h5 class="fw-bold">Genel Galeri</h5>
+        <p class="text-muted">Genel galeri fotoğraflarını yönetin.</p>
+      </div>
+    </a>
+  </div>
+
+      <!-- ÜRÜNLER -->
+      <div class="col-md-4">
+        <a href="{{ url_for('admin.urunler') }}" class="text-decoration-none text-dark">
+          <div class="p-4 bg-light shadow-sm rounded text-center h-100 border border-info">
+            <h5 class="fw-bold">Ürünler</h5>
+            <p class="text-muted">Dropdown menüsündeki ürünleri yönetin.</p>
+          </div>
+        </a>
+      </div>
+
+    <!-- ÇIKIŞ -->
+    <div class="mt-5">
+      <a href="{{ url_for('admin.admin_logout') }}" class="btn btn-outline-danger">Çıkış Yap</a>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

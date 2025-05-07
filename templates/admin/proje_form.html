@@ -1,0 +1,24 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>{{ baslik }}</h2>
+
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+      {{ form.baslik.label(class="form-label") }}
+      {{ form.baslik(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.gorsel.label(class="form-label") }}
+      {{ form.gorsel(class="form-control") }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a href="{{ url_for('admin.projeler') }}" class="btn btn-secondary ms-2">İptal</a>
+  </form>
+</div>
+{% endblock %}

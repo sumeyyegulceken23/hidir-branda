@@ -1,0 +1,28 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Index Sayfası Galerisi</h2>
+  <a href="{{ url_for('admin.galeri_ekle') }}" class="btn btn-success mb-3">+ Yeni Görsel Ekle</a>
+
+  {% if gorseller %}
+  <div class="row">
+    {% for g in gorseller %}
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img src="{{ url_for('static', filename=g.gorsel_yolu) }}" class="card-img-top" alt="{{ g.baslik }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ g.baslik }}</h5>
+          <a href="{{ url_for('admin.galeri_sil', id=g.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Silmek istediğine emin misin?')">Sil</a>
+          <a href="{{ url_for('admin.galeri_guncelle', id=g.id) }}" class="btn btn-sm btn-secondary ms-2">Güncelle</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>Henüz görsel eklenmemiş.</p>
+  {% endif %}
+  
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Galeri | HIDIR BRANDA{% endblock %}
+
+{% block content %}
+<!-- GALERİ BAŞLIK -->
+<section class="py-5 bg-dark text-white text-center">
+  <div class="container">
+    <h1 class="display-5 fw-bold">Galeri</h1>
+    <p class="lead">Gerçek uygulamalardan kareler. Kaliteyi ve farkı görün.</p>
+  </div>
+</section>
+
+<!-- FOTOGRAF GALERİSİ -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      {% for gorsel in galeriler %}
+      <div class="col-6 col-md-4">
+        <img src="{{ url_for('static', filename=gorsel.gorsel_yolu) }}" class="img-fluid rounded shadow-sm hover-zoom" alt="Galeri Görseli">
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- STİL -->
+<style>
+  .hover-zoom {
+    transition: transform 0.4s ease;
+  }
+  .hover-zoom:hover {
+    transform: scale(1.08);
+  }
+</style>
+{% endblock %}

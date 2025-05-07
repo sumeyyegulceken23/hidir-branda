@@ -1,0 +1,47 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">📦 Ürünler</h2>
+  <a href="{{ url_for('admin.urun_ekle') }}" class="btn btn-success mb-3">+ Yeni Ürün Ekle</a>
+
+  {% if urunler %}
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Görsel</th>
+          <th>Başlık</th>
+          <th>Slug</th>
+          <th>İşlemler</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for urun in urunler %}
+        <tr>
+          <td>{{ urun.id }}</td>
+          <td>
+            {% if urun.gorsel %}
+            <img src="{{ url_for('static', filename=urun.gorsel) }}" alt="{{ urun.baslik }}" width="60" height="60" style="object-fit: cover;">
+            {% else %}
+            <span class="text-muted">Yok</span>
+            {% endif %}
+          </td>
+          <td>{{ urun.baslik }}</td>
+          <td><code>{{ urun.slug }}</code></td>
+          <td>
+            <a href="{{ url_for('admin.urun_guncelle', id=urun.id) }}" class="btn btn-sm btn-outline-primary">Güncelle</a>
+            <a href="{{ url_for('admin.urun_galeri', urun_id=urun.id) }}" class="btn btn-sm btn-outline-warning ms-2">Galeri</a>
+            <a href="{{ url_for('admin.urun_sil', id=urun.id) }}" class="btn btn-sm btn-outline-danger ms-2" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="alert alert-warning">Henüz ürün eklenmemiş.</div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}İletişim | HIDIR BRANDA{% endblock %}
+
+{% block content %}
+<!-- BAŞLIK BÖLÜMÜ -->
+<section class="py-5 bg-dark text-white text-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold animate__animated animate__fadeInDown">Bize Ulaşın</h1>
+    <p class="lead">Aklınızdaki tüm sorular için bizimle iletişime geçebilirsiniz. Her projeye özel çözümler sunuyoruz.</p>
+  </div>
+</section>
+
+<!-- BİLGİ KUTULARI -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-3">
+        <div class="bg-white p-4 rounded shadow-sm h-100">
+          <i class="bi bi-geo-alt-fill fs-2 text-danger"></i>
+          <h6 class="fw-bold mt-2">Merkez Şube</h6>
+          <p class="text-muted small">Reyhanlı / Hatay</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="bg-white p-4 rounded shadow-sm h-100">
+          <i class="bi bi-telephone-fill fs-2 text-danger"></i>
+          <h6 class="fw-bold mt-2">Sabit Telefon</h6>
+          <p class="text-muted small"><a href="tel:+905336132588" class="text-decoration-none text-muted">90 533 613 25 88</a></p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="bg-white p-4 rounded shadow-sm h-100">
+          <i class="bi bi-phone-fill fs-2 text-danger"></i>
+          <h6 class="fw-bold mt-2">Cep Telefonu</h6>
+          <p class="text-muted small"><a href="tel:+905336132588" class="text-decoration-none text-muted">+90 533 613 25 88</a></p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="bg-white p-4 rounded shadow-sm h-100">
+          <i class="bi bi-whatsapp fs-2 text-danger"></i>
+          <h6 class="fw-bold mt-2">Whatsapp</h6>
+          <p class="text-muted small"><a href="https://wa.me/905336132588" target="_blank" class="text-decoration-none text-muted">+90 533 613 25 88</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HARİTA VE GALERİ ALANI -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- HARİTA -->
+      <div class="col-md-6">
+        <div class="p-3 rounded shadow bg-white animate__animated animate__fadeIn">
+          <h4 class="mb-4 text-danger">Ofis Konumumuz</h4>
+          <div class="ratio ratio-16x9">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3216.4902020812906!2d36.56797047562005!3d36.276153972401225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x152582e34685b001%3A0x720696c4285594b2!2shidirbranda!5e0!3m2!1str!2str!4v1744974541212!5m2!1str!2str" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOTO GALERİ YAN ALAN -->
+      <div class="col-md-6">
+        <div class="p-3 rounded shadow bg-white animate__animated animate__fadeIn">
+          <h4 class="mb-4 text-danger">Ofisimizden Kareler</h4>
+          <div class="row g-3">
+            <div class="col-12">
+              <img src="{{ url_for('static', filename='img/iletisim2.jpg') }}" alt="Ofis Görseli 1" class="img-fluid rounded shadow-sm">
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KURUMSAL İLETİŞİM ALANI -->
+<section class="py-5 text-white" style="background: linear-gradient(90deg, #2c3e50 0%, #4ca1af 100%);">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-md-2 text-center">
+        <img src="{{ url_for('static', filename='img/logo6.png') }}" alt="Hıdır Branda Logo" class="img-fluid  shadow" style="width: auto;  object-fit: cover;">
+      </div>
+      <div class="col-md-7">
+        <h5 class="fw-bold mb-2"><i class="bi bi-chat-dots-fill me-2"></i>HIDIR BRANDA size özel çözümler sunar</h5>
+        <p class="mb-0">20 yıllık tecrübemizle tente, pergola, kış bahçesi ve araç brandası sistemlerinde her projeye özel kaliteli üretim ve profesyonel uygulama sunuyoruz.</p>
+      </div>
+      <div class="col-md-3 text-md-end text-center">
+        <a href="tel:+905336132588" class="btn btn-light text-dark fw-bold me-2"><i class="bi bi-telephone-fill me-1"></i> Ara</a>
+        <a href="https://wa.me/905336132588" target="_blank" class="btn btn-success fw-bold"><i class="bi bi-whatsapp me-1"></i> WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOSYAL MEDYA VE HIZLI ERİŞİM ALANI -->
+<section class="py-5 bg-white border-top">
+  <div class="container text-center">
+    <h5 class="fw-bold mb-4 text-dark">Bizi Sosyal Medyada Takip Edin</h5>
+    <div class="d-flex justify-content-center gap-3 mb-4">
+      <a href="https://www.instagram.com/ahmetscbs/" class="text-decoration-none text-primary fs-4" title="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.facebook.com/ahmetburak.sucubasi/" class="text-decoration-none text-primary fs-4" title="Facebook"><i class="bi bi-facebook"></i></a>
+      <a href="#" class="text-decoration-none text-primary fs-4" title="YouTube"><i class="bi bi-youtube"></i></a>
+    </div>
+    <p class="text-muted small">© 2025 HIDIR BRANDA - Tüm Hakları Saklıdır | <a href="{{ url_for('index') }}" class="text-decoration-none">Anasayfa</a> | <a href="{{ url_for('iletisim') }}" class="text-decoration-none">İletişim</a></p>
+  </div>
+</section>
+
+{% endblock %}

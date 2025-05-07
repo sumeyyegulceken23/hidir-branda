@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}{{ baslik }} | Admin Panel{% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <h3 class="fw-bold text-danger mb-4">{{ baslik }}</h3>
+
+    <form method="POST">
+      {{ form.hidden_tag() }}
+
+      <div class="mb-3">
+        {{ form.ad.label(class="form-label") }}
+        {{ form.ad(class="form-control") }}
+      </div>
+
+      <div class="mb-3">
+        {{ form.ikon.label(class="form-label") }}
+        {{ form.ikon(class="form-control") }}
+        <small class="text-muted">Örn: bi-sun, bi-tools</small>
+      </div>
+
+      <div class="mb-3">
+        {{ form.aciklama.label(class="form-label") }}
+        {{ form.aciklama(class="form-control", rows="4") }}
+      </div>
+
+      <button type="submit" class="btn btn-primary">Kaydet</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

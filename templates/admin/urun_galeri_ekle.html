@@ -1,0 +1,16 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>{{ urun.baslik }} için Yeni Galeri Fotoğrafı Ekle</h2>
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      {{ form.gorsel.label(class="form-label") }}
+      {{ form.gorsel(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a href="{{ url_for('admin.urun_galeri', urun_id=urun.id) }}" class="btn btn-secondary ms-2">Geri Dön</a>
+  </form>
+</div>
+{% endblock %}
