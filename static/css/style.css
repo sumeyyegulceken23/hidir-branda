@@ -274,8 +274,9 @@ body, html {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
+
 .stat-box {
-  background-color: #f9f9f9;
+  background-color: #e2dfdf;
   padding: 20px;
   border-radius: 12px;
   transition: transform 0.3s ease;
