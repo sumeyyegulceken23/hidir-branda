@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for, flash, request, Response
 from flask_login import LoginManager
 from models import db, User, Hizmet, GaleriGorsel, Galeri, Proje, SSS,Urun
 from admin_routes import admin_bp
@@ -91,6 +91,28 @@ def urun_detay(slug):
     urun = Urun.query.filter_by(slug=slug).first_or_404()
     return render_template("urun_detay.html", urun=urun)
 
+from flask import Response
+from models import Urun
+
+@app.route("/sitemap.xml")
+def sitemap():
+    urunler = Urun.query.all()
+    urls = [
+        {"loc": url_for("index", _external=True)},
+        {"loc": url_for("hakkimizda", _external=True)},
+        {"loc": url_for("projeler", _external=True)},
+        {"loc": url_for("galeri", _external=True)},
+        {"loc": url_for("iletisim", _external=True)},
+        {"loc": url_for("sss", _external=True)},
+    ]
+
+    for urun in urunler:
+        urls.append({
+            "loc": url_for("urun_detay", slug=urun.slug, _external=True)
+        })
+
+    xml = render_template("sitemap_template.xml", urls=urls)
+    return Response(xml, mimetype="application/xml")
 
 
 
