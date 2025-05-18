@@ -291,7 +291,7 @@ body, html {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background-color: #6c63ff; /* İsteğe bağlı renk */
+  background-color: red; /* İsteğe bağlı renk */
   color: #fff;
   border-radius: 50%;
   width: 50px;
